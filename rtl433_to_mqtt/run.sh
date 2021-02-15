@@ -10,12 +10,13 @@ MQTT_PASSWORD="$(bashio::config 'mqtt_password')"
 MQTT_TOPIC="$(bashio::config 'mqtt_topic')"
 PROTOCOL="$(bashio::config 'protocol')"
 RETAIN="$(bashio::config 'retain')"
+FREQUENCY="$(bashio::config 'frequency')"
 
 echo "Starting rtl433_to_mqtt with the following parameters:"
 echo "MQTT Host = $MQTT_HOST, MQTT User = $MQTT_USER, MQTT Password = $MQTT_PASSWORD"
-echo "MQTT Topic = $MQTT_TOPIC, PROTOCOL = $PROTOCOL, RETAIN = $RETAIN"
+echo "MQTT Topic = $MQTT_TOPIC, PROTOCOL = $PROTOCOL, RETAIN = $RETAIN" FREQUENCY = $FREQUENCY
 
 # uncomment to debug rtl_433 command
 #set -x
 
-/usr/local/bin/rtl_433 -C si -R $PROTOCOL -F "mqtt://$MQTT_HOST:1883,user=$MQTT_USER,pass=$MQTT_PASSWORD,retain=$RETAIN,devices=$MQTT_TOPIC[/model][/id]"
+/usr/local/bin/rtl_433 -C si -R $PROTOCOL -f $FREQUENCY -F "mqtt://$MQTT_HOST:1883,user=$MQTT_USER,pass=$MQTT_PASSWORD,retain=$RETAIN,devices=$MQTT_TOPIC[/model][/id]"
