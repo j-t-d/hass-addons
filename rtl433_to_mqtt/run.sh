@@ -19,4 +19,4 @@ echo "MQTT Topic = $MQTT_TOPIC, PROTOCOL = $PROTOCOL, RETAIN = $RETAIN" FREQUENC
 # uncomment to debug rtl_433 command
 #set -x
 
-/usr/local/bin/rtl_433 -C si -R $PROTOCOL -f $FREQUENCY -F "mqtt://$MQTT_HOST:1883,user=$MQTT_USER,pass=$MQTT_PASSWORD,retain=$RETAIN,devices=$MQTT_TOPIC[/model][/id]"
+/usr/local/bin/rtl_433 -C si -R $PROTOCOL -f $FREQUENCY -F "mqtt://$MQTT_HOST:1883,user=$MQTT_USER,pass=$MQTT_PASSWORD,retain=$RETAIN,devices=$MQTT_TOPIC[/model][/subtype][/id]"
